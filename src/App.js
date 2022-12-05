@@ -15,11 +15,12 @@ import {
   Kanban,
   Area,
   Bar,
-  pie,
+  Pie,
   Financial,
   ColorPicker,
   ColorMapping,
   Editor,
+  Line,
 } from "./pages";
 
 import "./App.css";
@@ -46,10 +47,12 @@ const App = () => {
 
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-              Sidebar
+              <Sidebar />
             </div>
           ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">Sidebar-0</div>
+            <div className="w-0 dark:bg-secondary-dark-bg">
+              <Sidebar />
+            </div>
           )}
 
           <div
@@ -58,36 +61,36 @@ const App = () => {
             }`}
           >
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
-              navbar
+              <Navbar />
             </div>
           </div>
 
           <div>
             <Routes>
               {/* Dashboard */}
-              <Route path="/" element={"Ecommerce"} />
-              <Route path="/ecommerce" element="ecom" />
+              <Route path="/" element={<Ecommerce />} />
+              <Route path="/ecommerce" element={<Ecommerce />} />
 
               {/* Pages */}
-              <Route path="/orders" element="orders" />
-              <Route path="/employess" element="employess" />
-              <Route path="/customers" element="customers" />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/employess" element={<Employees />} />
+              <Route path="/customers" element={<Customers />} />
 
               {/* Apps */}
-              <Route path="/kanban" element="kanban" />
-              <Route path="/editor" element="editor" />
-              <Route path="/calendar" element="calendar" />
-              <Route path="/color-picker" element="color-picker" />
+              <Route path="/kanban" element={<Kanban />} />
+              <Route path="/editor" element={<Editor />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/color-picker" element={<ColorPicker />} />
 
               {/* Charts */}
-              <Route path="/line" element="line" />
-              <Route path="/area" element="area" />
-              <Route path="/bar" element="bar" />
-              <Route path="/pie" element="pie" />
-              <Route path="/financial" element="financial" />
-              <Route path="/color-mapping" element="color-mapping" />
-              <Route path="/pyramid" element="pyramid" />
-              <Route path="/stacked" element="stacked" />
+              <Route path="/line" element={<Line />} />
+              <Route path="/area" element={<Area />} />
+              <Route path="/bar" element={<Bar />} />
+              <Route path="/pie" element={<Pie />} />
+              <Route path="/financial" element={<Financial />} />
+              <Route path="/color-mapping" element={<ColorMapping />} />
+              <Route path="/pyramid" element={<Pyramid />} />
+              <Route path="/stacked" element={<Stacked />} />
             </Routes>
           </div>
         </div>
