@@ -2,13 +2,21 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SiShopware } from "react-icons/si";
 import { MdOutlineCancel } from "react-icons/md";
-import { TooltipComponent } from "@syncfusion/ej2-react-popups";
+import { setSpinner, TooltipComponent } from "@syncfusion/ej2-react-popups";
 
 import { links } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+
+  const handleCloseSideBar = () => {
+    if (screenSize <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  };
 
   const activeLink =
     "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2";
@@ -22,7 +30,7 @@ const Sidebar = () => {
           <div className="flex justify-between items-center">
             <Link
               to="/"
-              onClick={() => setActiveMenu(false)}
+              onClick={handleCloseSideBar}
               className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
             >
               <SiShopware /> <span>Shoppy</span>
@@ -48,7 +56,7 @@ const Sidebar = () => {
                   <NavLink
                     to={`/${link.name}`}
                     key={link.name}
-                    // onClick={handleCloseSideBar}
+                    onClick={handleCloseSideBar}
                     // style={({ isActive }) => ({
                     //   backgroundColor: isActive ? currentColor : "",
                     // })}
