@@ -39,6 +39,7 @@ const Orders = () => {
             Resize,
             Sort,
             ContextMenu,
+            Filter,
             Page,
             ExcelExport,
             Edit,
