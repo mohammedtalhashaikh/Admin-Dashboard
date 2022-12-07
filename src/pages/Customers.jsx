@@ -3,37 +3,44 @@ import {
   GridComponent,
   ColumnsDirective,
   ColumnDirective,
-  Search,
   Page,
+  Selection,
+  Edit,
+  Filter,
   Inject,
   Toolbar,
+  Sort,
 } from "@syncfusion/ej2-react-grids";
 
-import { employeesData, employeesGrid } from "../data/dummy";
+import { customersData, customersGrid } from "../data/dummy";
 
 import { Header } from "../components";
 
-const Employees = () => {
+const Customers = () => {
   return (
     <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="Page" title="Employees" />
+      <Header category="Page" title="Customers" />
       <GridComponent
-        dataSource={employeesData}
+        dataSource={customersData}
         allowPaging
         allowExcelExport
         allowSorting
-        toolbar={["Search"]}
+        toolbar={["Delete"]}
+        editSettings={{
+          allowDeleting: true,
+          allowEditing: true,
+        }}
         width="auto"
       >
         <ColumnsDirective>
-          {employeesGrid.map((item, index) => (
+          {customersGrid.map((item, index) => (
             <ColumnDirective key={index} {...item} />
           ))}
         </ColumnsDirective>
-        <Inject services={[Page, Search, Toolbar]} />
+        <Inject services={[Page, Toolbar, Selection, Filter, Edit, Sort]} />
       </GridComponent>
     </div>
   );
 };
 
-export default Employees;
+export default Customers;
